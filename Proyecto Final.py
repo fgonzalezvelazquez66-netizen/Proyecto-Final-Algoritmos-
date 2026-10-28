@@ -7,60 +7,72 @@ usuario_est = "admin"
 contraseña_est = "Acces2610"
 control = 3
 control2 = 0
-    
+        
 print("==================================")
 print("        Sistema de gestión")
 print("        Acceso Restringido")
 print("==================================")
-    
-while True and control2 < control:
+
+inicio = True     
+while inicio ==True and control2 < control:
     usuario = input("Ingrese su usuario: ")
     contraseña = input("Ingrese su contraseña: ")
 
     if usuario == usuario_est and contraseña == contraseña_est:
         print("Credenciales válidas. Acceso concedido.")
-        break
+    
+        while True:
+            print("=======================================")
+            print("            Menú de Opciones")
+            print("=======================================")
+            print("Inventario__________________________(1)")
+            print("Agregar Producto____________________(2)")
+            print("Busca Producto______________________(3)")
+            print("Eliminar Producto___________________(4)")
+            print("Cálculos Estadísticos_______________(5)")
+            print("Ordenar Productos___________________(6)")
+            print("Salir del Sistema___________________(7)")
 
-    else:
-        control2 += 1
-        print ("Credenciales incorrectas")
-        print ("Intentos: ",control2," de: ", control, " Intente de nuevo: ")
-
-print ("Intentos: ", control2," de: ",control, " Acceso denegado")
-  
-
-
-while True:
-    print("===============================")
-    print("       Menú de Opciones")
-    print("===============================")
-    print("Inventario_____________________(1)")
-    print("Agregar Producto_______________(2)")
-    print("Busca Producto_________________(3)")
-    print("Eliminar Producto______________(4)")
-    print("Cálculos Estadísticos__________(5)")
-    print("Ordenar Productos______________(6)")
-    print("Salir del Sistema)_____________(7)")
-
-    try:
-        opcion=int(input("¿Qué operación desea realizar? (1-7)"))
-
-        if opcion == 1:
-            print("Seleccionó la opción de Inventario")
-            print("El inventario actual es: ")
-            listar_productos()
-            
-        elif opcion == 2:
-            print("Seleccionó la opción de Agregar Producto.")
-
-        elif opcion == 7:
-            print("Cerrando el sistema")
-            print("¡Hasta pronto!")
-            break
+            try:
+                opcion=int(input("¿Qué operación desea realizar? (1-7)"))
                 
-        else:
-            print("Error, ingrese una opción válida entre 1 y 7")
+                
+                if opcion == 1:
+                    print("Seleccionó la opción de Inventario")
+                    print("El inventario actual es: ")
+                    listar_productos()
+                
+                elif opcion == 2:
+                    print("Seleccionó la opción de Agregar Producto.")
+                elif opcion == 3:
+                     print("Seleccionó la opción de Buscar Producto.")
 
-    except ValueError:
-        print("Error, debe ingresar un valor numérico válido    .")
-print("¡Gracias por usar el sistema de gestión!")            
+                elif opcion == 4:
+                    print("Seleccionó la opción de Eliminar Producto.")
+
+                elif opcion == 5:
+                    print("Seleccionó la opción de Cálculos Estadísticos.")
+
+                elif opcion == 6:
+                    print("Seleccionó la opción de Ordenar Productos.")            
+
+                elif opcion == 7:
+                    print("Cerrando el sistema")
+                    print("¡Hasta pronto!")
+                    inicio = False
+                    break
+                    
+                else:
+                    print("Error, ingrese una opción válida entre 1 y 7")
+            except ValueError:
+                        print("Error, debe ingresar un valor numérico válido.")
+                        print("Ingrese un valor entre 1 y 7")
+                        continue
+    else:
+        if control2 <= control:
+            control2 += 1
+            print ("Credenciales incorrectas")
+            print ("Intentos: ",control2," de: ", control, " Intente de nuevo: ")
+if control2 >= control:
+    print ("Intentos: ", control2," de: ",control, " Acceso denegado")
+    inicio = False
