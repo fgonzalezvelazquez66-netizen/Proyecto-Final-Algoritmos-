@@ -1,4 +1,4 @@
-codigo_p = ["P001", "P002", "P004"]
+codigo_p = ["P001", "P002", "P003","P004"]
 nombre_P = ["Monitor", "Teclado", "Mouse", "Impresora"]
 precio_P = [300, 70, 40, 800]
 cantidad_P = [5, 15, 15, 5]
@@ -40,22 +40,41 @@ while inicio ==True and control2 < control:
                 if opcion == 1:
                     print("Seleccionó la opción de Inventario")
                     print("El inventario actual es: ")
-                    listar_productos()
+                    listar_P()
                 
                 elif opcion == 2:
                     print("Seleccionó la opción de Agregar Producto.")
+                    agregar_P()
+
+                    pass
+                    input("Presione la tecla espacio para regresar al menú principal")
                 elif opcion == 3:
                      print("Seleccionó la opción de Buscar Producto.")
+                     buscar_P()
+
+                     pass
+                     input("Presione la tecla espacio para regresar al menú principal")
 
                 elif opcion == 4:
                     print("Seleccionó la opción de Eliminar Producto.")
+                    eliminar_P()    
+                    pass
+                    input("Presione la tecla enter para regresar al menú principal")
 
                 elif opcion == 5:
                     print("Seleccionó la opción de Cálculos Estadísticos.")
 
+                    calculos_E()
+
+                    pass
+                    input("Presione la tecla enter para regresar al menú principal")
+
                 elif opcion == 6:
                     print("Seleccionó la opción de Ordenar Productos.")            
+                    ordenar_P()
 
+                    pass
+                    input("Presione la tecla enter para regresar al menú principal")
                 elif opcion == 7:
                     print("Cerrando el sistema")
                     print("¡Hasta pronto!")
@@ -69,7 +88,6 @@ while inicio ==True and control2 < control:
                         print("Ingrese un valor entre 1 y 7")
                         continue
     else:
-        if control2 <= control:
             control2 += 1
             print ("Credenciales incorrectas")
             print ("Intentos: ",control2," de: ", control, " Intente de nuevo: ")
