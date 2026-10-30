@@ -43,22 +43,22 @@ def calculos_E():
     print(f"• Precio promedio por producto  : ${precio_promedio:.2f}")
     print(f"• Producto más caro             : {nombre_P[idx_max]} (${max_precio:.2f})")
     print(f"• Producto más barato           : {nombre_P[idx_min]} (${min_precio:.2f})")
-    print("=" * 55)
+    print("=" * 40)
 # 3. ALGORITNO DE BURBUJA 
 
 def ordenar_P():
     if not codigo_p:
         print("El inventario está vacío.")
         return
-    print("=" * 55)    
-    print("\n--- ORDENAR PRODUCTOS (MÉTODO BURBUJA) ---")
-    print("=" * 55)
+    print("=" * 40)    
+    print("\n---ORDENAR PRODUCTOS (MÉTODO BURBUJA)---")
+    print("=" * 40)
     print("1. Ordenar por Precio (Menor a Mayor)")
     print("2. Ordenar por Precio (Mayor a Menor)")
     print("3. Ordenar alfabéticamente por Nombre (A - Z)")
     print("")
     opcion = input("Seleccione una opción de ordenamiento (1-3): ")
-    print("=" * 55)
+    print("=" * 40  )
 
     n = len(codigo_p)
     
@@ -85,6 +85,105 @@ def ordenar_P():
     print("\n¡Productos ordenados exitosamente con Burbuja!")
     listar_inventario()
 
+def registrar_producto():
+    print("=" * 40)
+    print ("      REGISTRAR NUEVO PRODUCTO")
+    print("=" * 40)
+    codigo = input("\n Ingrese el código del producto: ")
+    if not codigo:
+        print("El código no puede estar vacío.")
+        print("=" * 40)
+        return 
+    if codigo in codigo_p:
+        print("El código ya existe. No se puede registrar el producto.")
+        print("=" * 40)
+        return
+    nombre = input("Ingrese el nombre del producto: ")
+    if not nombre:
+        print("El nombre no puede estar vacío.")
+        print("=" * 40)
+        return
+
+   
+    while True:
+        try:
+            precio = float(input("Ingrese el precio del producto: "))
+            if precio < 0:
+                print("El precio no puede ser negativo. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Precio inválido. Por favor, ingrese un valor numérico válido.")
+
+   
+    while True:
+        try:
+            cantidad = int(input("Ingrese la cantidad en stock: "))
+            if cantidad < 0:
+                print("La cantidad no puede ser negativa. Intente nuevamente.")
+                continue
+            break
+        except ValueError:
+            print("Cantidad inválida. Por favor, ingrese un número entero válido.")
+
+    #REGISTRAR EL PRODUCTO 
+    codigo_p.append(codigo)
+    nombre_P.append(nombre)
+    precio_P.append(precio)
+    cantidad_P.append(cantidad)
+    print("Producto registrado con éxito.")
+    print("=" * 40)
+
+def buscar_P():
+    print("=" * 40)
+    print("         BUSCAR PRODUCTO")
+    print("=" * 40)
+     
+    if not codigo_p:
+        print("\n No hay productos registrados.")
+        print("=" * 40)
+        return
+    criterio = input("Ingrese el código o nombre del producto a buscar: ")
+
+    encontrado = False
+    for i in range(len(codigo_p)):
+        #BUSQUEDA DE PRODUCTO POR CODIGO O NOMBRE 
+        if codigo_p[i] == criterio or nombre_P[i].lower() == criterio.lower():
+            print(f"\nProducto encontrado: Código: {codigo_p[i]}, Nombre: {nombre_P[i]}, Precio: {precio_P[i]}, Cantidad: {cantidad_P[i]}")
+            encontrado = True
+            print("=" * 40)
+            break
+    
+    if not encontrado:
+        print("\nProducto no encontrado.")
+        print("=" * 40)
+
+#BORRAR UN REGISTRO DE LAS LISTAS
+def eliminar_P():
+    print("=" * 40)
+    print("        ELIMINAR PRODUCTO")
+    print("=" * 40)
+    if not codigo_p:
+        print("\n No hay productos registrados.")
+        print("=" * 40)
+        return
+    
+    codigo_a_eliminar = input("Ingrese el código del producto a eliminar: ")
+    if codigo_a_eliminar in codigo_p:
+        idx = codigo_p.index(codigo_a_eliminar)
+        confirmacion = input(f"¿Está seguro de que desea eliminar el producto? (s/n): ")
+        if confirmacion == "s" or confirmacion == "S" or confirmacion == "si" or confirmacion == "SI":
+            codigo_p.pop(idx)
+            nombre_P.pop(idx)
+            precio_P.pop(idx)
+            cantidad_P.pop(idx)
+            print("\n Producto eliminado con éxito.")
+            print("=" * 40)
+        else: 
+            print("\n Eliminación cancelada.")
+            print("=" * 40)
+
+
 usuario_est = "admin"
 contraseña_est = "Acces2610"
 control = 3
@@ -104,9 +203,9 @@ while inicio ==True and control2 < control:
         print("Credenciales válidas. Acceso concedido.")
     
         while True:
-            print("=======================================")
+            print("========================================")
             print("            Menú de Opciones")
-            print("=======================================")
+            print("========================================")
             print("Inventario__________________________(1)")
             print("Agregar Producto____________________(2)")
             print("Busca Producto______________________(3)")
@@ -131,7 +230,7 @@ while inicio ==True and control2 < control:
                 
                 elif opcion == 2:
                     print("\nSeleccionó la opción de Agregar Producto.")
-                    agregar_P()
+                    registrar_producto()
 
                     pass
                     input("Presione la tecla espacio para regresar al menú principal")
