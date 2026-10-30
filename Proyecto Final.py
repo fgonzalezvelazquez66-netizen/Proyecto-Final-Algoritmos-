@@ -226,26 +226,26 @@ while inicio ==True and control2 < control:
                     listar_inventario()
 
                     pass
-                    print("Presione la tecla espacio para regresar al menú principal")
+                    print("Presione la tecla Enter para regresar al menú principal")
                 
                 elif opcion == 2:
                     print("\nSeleccionó la opción de Agregar Producto.")
                     registrar_producto()
 
                     pass
-                    input("Presione la tecla espacio para regresar al menú principal")
+                    input("Presione la tecla Enter para regresar al menú principal")
                 elif opcion == 3:
                      print("\nSeleccionó la opción de Buscar Producto.")
                      buscar_P()
 
                      pass
-                     input("Presione la tecla espacio para regresar al menú principal")
+                     input("Presione la tecla Enter para regresar al menú principal")
 
                 elif opcion == 4:
                     print("\nSeleccionó la opción de Eliminar Producto.")
                     eliminar_P()    
                     pass
-                    input("Presione la tecla enter para regresar al menú principal")
+                    input("Presione la tecla Enter para regresar al menú principal")
 
                 elif opcion == 5:
                     print("\nSeleccionó la opción de Cálculos Estadísticos.")
@@ -253,14 +253,14 @@ while inicio ==True and control2 < control:
                     calculos_E()
 
                     pass
-                    input("Presione la tecla enter para regresar al menú principal")
+                    input("Presione la tecla Enter para regresar al menú principal")
 
                 elif opcion == 6:
                     print("\nSeleccionó la opción de Ordenar Productos.")            
                     ordenar_P()
 
                     pass
-                    input("Presione la tecla enter para regresar al menú principal")
+                    input("Presione la tecla Enter para regresar al menú principal")
                 elif opcion == 7:
                     print("Cerrando el sistema")
                     print("¡Hasta pronto!")
